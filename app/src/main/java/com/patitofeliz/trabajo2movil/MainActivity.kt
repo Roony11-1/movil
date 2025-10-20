@@ -48,8 +48,8 @@ class MainActivity : AppCompatActivity()
             if (position == 0) {
                 estado = !estado
 
-                val newAdapter = if (!estado) adaptadorLvMPrincipal else adaptadorLvMPrincipal2
-                listViewMPrincipal.adapter = newAdapter
+                val adapter = if (!estado) adaptadorLvMPrincipal else adaptadorLvMPrincipal2
+                listViewMPrincipal.adapter = adapter
             }
         }
 
