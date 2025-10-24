@@ -17,6 +17,7 @@ import com.patitofeliz.trabajo2movil.model.Response
 import com.patitofeliz.trabajo2movil.model.Usuario
 import retrofit2.Call
 import retrofit2.Callback
+import kotlin.math.log
 
 class MainActivity : AppCompatActivity()
 {
@@ -29,6 +30,7 @@ class MainActivity : AppCompatActivity()
         // Botones
         var botonLogear: Button = findViewById(R.id.btnLogin);
         var botonRegistrar: Button = findViewById(R.id.btnRegister);
+        var btnInvitado: Button = findViewById(R.id.btnInvitado)
         // EditText
         var etEmail: EditText = findViewById(R.id.etEmail);
         var etContraseña: EditText = findViewById(R.id.etPassword);
@@ -46,7 +48,7 @@ class MainActivity : AppCompatActivity()
 
             val loginRequest: LoginRequest = LoginRequest(email, contraseña)
 
-            RetrofitClient.instance.loginUsuario(loginRequest)
+            RetrofitClient.usuarioService.loginUsuario(loginRequest)
                 .enqueue(object : Callback<Response<Usuario>> {
                     override fun onResponse(
                         call: Call<Response<Usuario>>,

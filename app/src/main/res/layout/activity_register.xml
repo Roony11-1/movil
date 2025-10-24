@@ -108,39 +108,33 @@
         android:ems="10"
         android:hint="Teléfono (Opcional)"
         android:inputType="number"
-        app:layout_constraintBottom_toTopOf="@+id/etRegion"
+        app:layout_constraintBottom_toTopOf="@+id/spRegion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etConfirmarContraseña"
         app:layout_constraintVertical_bias="0.5" />
 
-    <EditText
-        android:id="@+id/etRegion"
+    <Spinner
+        android:id="@+id/spRegion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Región"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/etComuna"
+        app:layout_constraintBottom_toTopOf="@+id/spComuna"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etTelefono"
         app:layout_constraintVertical_bias="0.5" />
 
-    <EditText
-        android:id="@+id/etComuna"
+    <Spinner
+        android:id="@+id/spComuna"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Comuna"
-        android:inputType="text"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etRegion"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintTop_toBottomOf="@+id/spRegion" />
 
     <Button
         android:id="@+id/btnRegistrar"
@@ -151,6 +145,7 @@
         app:layout_constraintBottom_toTopOf="@+id/btnVolverLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etComuna"
+        app:layout_constraintTop_toBottomOf="@+id/spComuna"
         app:layout_constraintVertical_bias="0.5" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

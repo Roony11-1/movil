@@ -66,7 +66,20 @@
         android:text="Registrarse"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnLogin"
-        app:layout_constraintVertical_bias="0.279" />
+        app:layout_constraintVertical_bias="0.069" />
+
+    <Button
+        android:id="@+id/btnInvitado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jugar sin una cuenta"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnRegister"
+        app:layout_constraintVertical_bias="0.177" />
 </androidx.constraintlayout.widget.ConstraintLayout>
