@@ -132,7 +132,7 @@ class RegisterActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val usuario: Usuario = Usuario(nombreUsuario, email, contraseña, telefono, comunaSeleccionada, "usuario", "none")
+            val usuario: Usuario = Usuario(null, nombreUsuario, email, contraseña, telefono, comunaSeleccionada, "usuario", "none")
 
             RetrofitClient.usuarioService.registrarUsuario(usuario)
                 .enqueue(object : Callback<Response<Usuario>> {
@@ -144,8 +144,10 @@ class RegisterActivity : AppCompatActivity() {
                             val res = response.body()
                             Toast.makeText(this@RegisterActivity, res?.message, Toast.LENGTH_SHORT).show()
                             if (res?.success == true)
+                            {
                                 startActivity(irVentanaLogin)
-
+                                finish()
+                            }
                         } else {
                             Toast.makeText(this@RegisterActivity, "Error en la respuesta del servidor", Toast.LENGTH_SHORT).show()
                         }
@@ -162,6 +164,7 @@ class RegisterActivity : AppCompatActivity() {
 
         btnVISesion.setOnClickListener {
             startActivity(irVentanaLogin)
+            finish()
         }
 
 

@@ -14,7 +14,10 @@ import androidx.core.view.WindowInsetsCompat
 import com.patitofeliz.trabajo2movil.config.RetrofitClient
 import com.patitofeliz.trabajo2movil.model.LoginRequest
 import com.patitofeliz.trabajo2movil.model.Response
+import com.patitofeliz.trabajo2movil.model.Sesion
 import com.patitofeliz.trabajo2movil.model.Usuario
+import com.patitofeliz.trabajo2movil.model.unidades.clases.Mirmidon
+import com.patitofeliz.trabajo2movil.sistemaunidad.UnidadController
 import retrofit2.Call
 import retrofit2.Callback
 import kotlin.math.log
@@ -57,6 +60,16 @@ class MainActivity : AppCompatActivity()
                         if (response.isSuccessful) {
                             val res = response.body()
                             Toast.makeText(this@MainActivity, res?.message, Toast.LENGTH_SHORT).show()
+                            if (res?.entity != null)
+                            {
+                                val sesion = Sesion(this@MainActivity)
+                                sesion.guardarUsuario(res.entity)
+                                UnidadController.limpiarLista()
+                                val intent = Intent(this@MainActivity, PrincipalActivity::class.java)
+                                startActivity(intent)
+                                finish()
+                            }
+
                         } else {
                             Toast.makeText(this@MainActivity, "Error en la respuesta del servidor", Toast.LENGTH_SHORT).show()
                         }
@@ -73,6 +86,16 @@ class MainActivity : AppCompatActivity()
             var irVentanaRegistro = Intent(this, RegisterActivity::class.java)
 
             startActivity(irVentanaRegistro)
+            finish()
+        }
+
+        btnInvitado.setOnClickListener {
+            val sesion = Sesion(this)
+            sesion.cerrarSesion()
+
+            val intent = Intent(this@MainActivity, PrincipalActivity::class.java)
+            startActivity(intent)
+            finish()
         }
 
 
