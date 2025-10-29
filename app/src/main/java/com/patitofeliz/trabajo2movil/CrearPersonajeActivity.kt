@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.patitofeliz.trabajo2movil.model.Sesion
+import com.patitofeliz.trabajo2movil.model.unidades.Nivel
 import com.patitofeliz.trabajo2movil.model.unidades.Unidad
 import com.patitofeliz.trabajo2movil.model.unidades.clases.Clase
 import com.patitofeliz.trabajo2movil.model.unidades.clases.Jinete
@@ -23,9 +24,6 @@ class CrearPersonajeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_crear_personaje)
-
-        ClaseRegistro.registrar("Mirmidón") { Mirmidon() }
-        ClaseRegistro.registrar("Jinete") { Jinete() }
 
         val sesion = Sesion(this)
 
@@ -58,7 +56,7 @@ class CrearPersonajeActivity : AppCompatActivity() {
                 cantidadPersonajes =+ 1
             }
 
-            val personaje = Unidad(cantidadPersonajes, etNombre.text.toString(), clase,1,idUsuario, clase.estadisticasBase)
+            val personaje = Unidad(cantidadPersonajes, etNombre.text.toString(), clase, Nivel(1, 0), idUsuario, clase.estadisticasBase)
 
             UnidadController.agregarPersonaje(personaje)
 

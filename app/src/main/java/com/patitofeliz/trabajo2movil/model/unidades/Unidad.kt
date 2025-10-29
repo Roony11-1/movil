@@ -6,9 +6,12 @@ import com.patitofeliz.trabajo2movil.model.unidades.clases.atributos.Estadistica
 class Unidad(var id: Int? = null,
              var nombre: String = "NN",
              var clase: Clase? = null,
-             var nivel: Int = 1,
+             var nivel: Nivel,
              var idUsuario: Int? = null,
              var estadisticasUnidad: Estadisticas)
 {
 
 }
+
+class Nivel(var nivel: Int,
+            var experiencia: Int)

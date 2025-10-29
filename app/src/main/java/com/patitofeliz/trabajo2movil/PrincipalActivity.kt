@@ -5,11 +5,13 @@ import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.patitofeliz.trabajo2movil.model.Sesion
+import com.patitofeliz.trabajo2movil.model.unidades.Unidad
 import com.patitofeliz.trabajo2movil.sistemaunidad.UnidadController
 
 class PrincipalActivity : AppCompatActivity() {
@@ -20,6 +22,19 @@ class PrincipalActivity : AppCompatActivity() {
 
         val sesion = Sesion(this)
         val usuario = sesion.obtenerUsuario()
+        var personajes: List<Unidad> = UnidadController.obtenerPersonajes()
+
+        fun verificarSizePersonajes(unidades:List<Unidad>): Boolean
+        {
+            if (unidades.size > 0)
+                return true
+            else
+            {
+                Toast.makeText(this, "Primero debes tener unidades", Toast.LENGTH_SHORT).show()
+                return false
+            }
+
+        }
 
         // Mapeamos el texto
         val tvSaludo: TextView = findViewById(R.id.tvSaludo)
@@ -46,6 +61,7 @@ class PrincipalActivity : AppCompatActivity() {
             arrayOf(
                 "Crear Personaje",
                 "Ver Personajes",
+                "Combatir",
                 "Volver a pantalla principal"
             )
         }
@@ -78,9 +94,22 @@ class PrincipalActivity : AppCompatActivity() {
 
             if (opcionSeleccionada.equals("Ver Personajes"))
             {
-                val intent = Intent(this@PrincipalActivity, VerPersonajeActivity::class.java)
-                startActivity(intent)
+                if (verificarSizePersonajes(personajes))
+                {
+                    val intent = Intent(this@PrincipalActivity, VerPersonajeActivity::class.java)
+                    startActivity(intent)
+                }
             }
+
+            if (opcionSeleccionada.equals("Combatir"))
+            {
+                if (verificarSizePersonajes(personajes))
+                {
+                    val intent = Intent(this@PrincipalActivity, CombateActivity::class.java)
+                    startActivity(intent)
+                }
+            }
+
         }
         
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->

@@ -26,8 +26,7 @@ class VerPersonajeActivity : AppCompatActivity() {
         var btnVolver: Button = findViewById(R.id.btnVolverPrincipal)
 
         var personajes: List<Unidad> = UnidadController.obtenerPersonajes()
-        val atributos: List<Map<String, String>> = personajes.map { mapOf("nombre" to "Nombre: ${it.nombre}", "clase" to "Clase: ${it.clase?.nombreClase}")
-        }
+        val atributos: List<Map<String, String>> = personajes.map { mapOf("nombre" to "Nombre: ${it.nombre}", "clase" to "Clase: ${it.clase?.nombreClase}") }
 
         val adaptadorPersonajes = SimpleAdapter(
             this,
@@ -44,7 +43,10 @@ class VerPersonajeActivity : AppCompatActivity() {
 
             val info = """
             Nombre: ${personaje.nombre}
-            Nivel: ${personaje.nivel}
+            -- Nivel --
+            Nivel: ${personaje.nivel.nivel}
+            Experiencia: ${personaje.nivel.experiencia}
+            -- Clase --
             Clase: ${personaje.clase?.nombreClase ?: "Sin clase"}
             PV: ${personaje.estadisticasUnidad.pv ?: "N/A"}
             Fuerza: ${personaje.estadisticasUnidad.fuerza ?: "N/A"}

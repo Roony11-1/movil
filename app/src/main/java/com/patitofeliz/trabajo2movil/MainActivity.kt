@@ -16,6 +16,7 @@ import com.patitofeliz.trabajo2movil.model.LoginRequest
 import com.patitofeliz.trabajo2movil.model.Response
 import com.patitofeliz.trabajo2movil.model.Sesion
 import com.patitofeliz.trabajo2movil.model.Usuario
+import com.patitofeliz.trabajo2movil.model.unidades.clases.Jinete
 import com.patitofeliz.trabajo2movil.model.unidades.clases.Mirmidon
 import com.patitofeliz.trabajo2movil.sistemaunidad.UnidadController
 import retrofit2.Call
@@ -28,6 +29,11 @@ class MainActivity : AppCompatActivity()
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+
+        // Registro de clases
+        // lo externalizare en su momento
+        ClaseRegistro.registrar("Mirmidón") { Mirmidon() }
+        ClaseRegistro.registrar("Jinete") { Jinete() }
 
         // Mapeamos
         // Botones
