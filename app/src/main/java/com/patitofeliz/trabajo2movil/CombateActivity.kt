@@ -64,6 +64,8 @@ class CombateActivity : AppCompatActivity() {
                 .setMessage(mensaje)
                 .setPositiveButton("Aceptar", null)
                 .show()
+
+            // Deberia crear en el objeto la batalla¿deberia agregarle interfaz?
         }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
