@@ -1,11 +1,9 @@
 package com.patitofeliz.trabajo2movil
 
 import android.os.Bundle
-import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.SimpleAdapter
 import android.widget.Spinner
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -15,11 +13,11 @@ import com.patitofeliz.trabajo2movil.combate.Combate
 import com.patitofeliz.trabajo2movil.model.unidades.Unidad
 import com.patitofeliz.trabajo2movil.sistemaunidad.UnidadController
 
-class CombateActivity : AppCompatActivity() {
+class PreparacionActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_combate)
+        setContentView(R.layout.activity_preparacion)
 
         // Aqui sera el combate
         // Primero debera seleccionar el personaje
@@ -32,7 +30,7 @@ class CombateActivity : AppCompatActivity() {
         // Creamos un adaptador
         val atributos: List<Map<String, String>> = personajes.map { mapOf("nombre" to "Nombre: ${it.nombre}", "clase" to "Clase: ${it.clase?.nombreClase}") }
 
-        val adaptadorPersonajes = SimpleAdapter(this@CombateActivity,
+        val adaptadorPersonajes = SimpleAdapter(this@PreparacionActivity,
             atributos,
             android.R.layout.simple_list_item_2,
             arrayOf("nombre", "clase"),

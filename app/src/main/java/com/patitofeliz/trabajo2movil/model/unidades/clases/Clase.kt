@@ -4,7 +4,8 @@ import com.patitofeliz.trabajo2movil.model.unidades.clases.atributos.Estadistica
 
 abstract class Clase(var nombreClase: String,
                      var estadisticasBase: Estadisticas,
-                     var estadisticasMaximas: Estadisticas)
+                     var estadisticasMaximas: Estadisticas,
+                     var spriteResId: Int)
 {
 
 }

@@ -105,7 +105,7 @@ class PrincipalActivity : AppCompatActivity() {
             {
                 if (verificarSizePersonajes(personajes))
                 {
-                    val intent = Intent(this@PrincipalActivity, CombateActivity::class.java)
+                    val intent = Intent(this@PrincipalActivity, PreparacionActivity::class.java)
                     startActivity(intent)
                 }
             }

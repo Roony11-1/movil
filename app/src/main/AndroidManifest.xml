@@ -19,6 +19,9 @@
             android:name=".CombateActivity"
             android:exported="false" />
         <activity
+            android:name=".PreparacionActivity"
+            android:exported="false" />
+        <activity
             android:name=".VerPersonajeActivity"
             android:exported="false" />
         <activity

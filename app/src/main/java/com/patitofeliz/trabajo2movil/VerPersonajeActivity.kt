@@ -4,8 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.ListView
 import android.widget.SimpleAdapter
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -42,24 +44,31 @@ class VerPersonajeActivity : AppCompatActivity() {
             val personaje = personajes[position]
 
             val info = """
-            Nombre: ${personaje.nombre}
-            -- Nivel --
-            Nivel: ${personaje.nivel.nivel}
-            Experiencia: ${personaje.nivel.experiencia}
-            -- Clase --
-            Clase: ${personaje.clase?.nombreClase ?: "Sin clase"}
-            PV: ${personaje.estadisticasUnidad.pv ?: "N/A"}
-            Fuerza: ${personaje.estadisticasUnidad.fuerza ?: "N/A"}
-            Habilidad: ${personaje.estadisticasUnidad.habilidad ?: "N/A"}
-            Velocidad: ${personaje.estadisticasUnidad.velocidad ?: "N/A"}
-            Defensa: ${personaje.estadisticasUnidad.defensa ?: "N/A"}
-            Resistencia: ${personaje.estadisticasUnidad.resistencia ?: "N/A"}
-            Constitución: ${personaje.estadisticasUnidad.constitucion ?: "N/A"}
+                Nombre: ${personaje.nombre}
+                -- Nivel --
+                Nivel: ${personaje.nivel.nivel}
+                Experiencia: ${personaje.nivel.experiencia}
+                -- Clase --
+                Clase: ${personaje.clase?.nombreClase ?: "Sin clase"}
+                PV: ${personaje.estadisticasUnidad.pv ?: "N/A"}
+                Fuerza: ${personaje.estadisticasUnidad.fuerza ?: "N/A"}
+                Habilidad: ${personaje.estadisticasUnidad.habilidad ?: "N/A"}
+                Velocidad: ${personaje.estadisticasUnidad.velocidad ?: "N/A"}
+                Defensa: ${personaje.estadisticasUnidad.defensa ?: "N/A"}
+                Resistencia: ${personaje.estadisticasUnidad.resistencia ?: "N/A"}
+                Constitución: ${personaje.estadisticasUnidad.constitucion ?: "N/A"}
         """.trimIndent()
+
+            val dialogView = layoutInflater.inflate(R.layout.dialog_personaje_info, null)
+            val imgClase = dialogView.findViewById<ImageView>(R.id.imgClase)
+            val tvInfo = dialogView.findViewById<TextView>(R.id.tvInfoPersonaje)
+
+            tvInfo.text = info
+            personaje.clase?.spriteResId?.let { imgClase.setImageResource(it) }
 
             AlertDialog.Builder(this)
                 .setTitle("Información del personaje")
-                .setMessage(info)
+                .setView(dialogView)
                 .setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
                 .show()
         }
