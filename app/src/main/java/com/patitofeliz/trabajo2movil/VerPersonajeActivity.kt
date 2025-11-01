@@ -64,7 +64,7 @@ class VerPersonajeActivity : AppCompatActivity() {
             val tvInfo = dialogView.findViewById<TextView>(R.id.tvInfoPersonaje)
 
             tvInfo.text = info
-            personaje.clase?.spriteResId?.let { imgClase.setImageResource(it) }
+            personaje.clase?.sprites?.imgScreen?.let { imgClase.setImageResource(it) }
 
             AlertDialog.Builder(this)
                 .setTitle("Información del personaje")
