@@ -1,7 +1,5 @@
 package com.patitofeliz.trabajo2movil.model.unidades.clases
 
-import android.os.Handler
-import android.os.Looper
 import android.widget.ImageView
 import com.patitofeliz.trabajo2movil.model.unidades.clases.atributos.Estadisticas
 import com.patitofeliz.trabajo2movil.R
@@ -28,8 +26,9 @@ class Mirmidon : Clase(
             R.drawable.mirmidon_at12
         ),
         delaysAtaque = listOf(
-            130, 110, 80, 60, 50, 500, 70, 90, 110, 130, 160
+            131, 111, 78, 62, 99, 498, 69, 88, 113, 132, 104
         ),
+        frameDmg = 6,
         dodge = listOf(
             R.drawable.mirmidon_dogde1,
             R.drawable.mirmidon_dodge2

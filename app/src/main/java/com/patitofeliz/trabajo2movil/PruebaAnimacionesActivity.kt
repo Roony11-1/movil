@@ -80,7 +80,7 @@ class PruebaAnimacionesActivity : AppCompatActivity() {
                 when (accionSeleccionada)
                 {
                     "Idle" -> unidadSeleccionada?.idleState(spriteClase)
-                    "Ataque" -> unidadSeleccionada?.atacarState(spriteClase)
+                    "Ataque" -> unidadSeleccionada?.atacarState(spriteClase, null)
                     "Esquiva" -> unidadSeleccionada?.dodgeState(spriteClase)
                 }
             }

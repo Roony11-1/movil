@@ -8,6 +8,7 @@ class Sprites(var imgScreen: Int,
     var idle: Int,
     var ataque: List<Int> = emptyList(),
     val delaysAtaque: List<Long>,
+    val frameDmg: Int? = 1,
     var dodge: List<Int> = emptyList(),
     val delaysDodge: List<Long>? = null)
 {
@@ -17,6 +18,7 @@ class Sprites(var imgScreen: Int,
         imageView: ImageView,
         frames: List<Int>,
         delays: List<Long>? = null,
+        onFrame: ((frameIndex: Int) -> Unit)? = null,
         onFinish: (() -> Unit)? = null)
     {
         if (frames.isEmpty()) return
@@ -27,6 +29,9 @@ class Sprites(var imgScreen: Int,
             override fun run()
             {
                 imageView.setImageResource(frames[frameIndex])
+
+                onFrame?.invoke(frameIndex)
+
                 frameIndex++
                 if (frameIndex < frames.size)
                 {
@@ -37,7 +42,6 @@ class Sprites(var imgScreen: Int,
                     onFinish?.invoke()
             }
         }
-
         handler.post(runnable)
     }
 
@@ -46,17 +50,19 @@ class Sprites(var imgScreen: Int,
         imageView.setImageResource(idle)
     }
 
-    fun atacar(imageView: ImageView)
-    {
-        mostrarAnimacion(imageView, ataque, delaysAtaque)
-        {
-            idle(imageView)
-        }
+    fun atacar(
+        imageView: ImageView,
+        onFrame: ((frameIndex: Int) -> Unit)? = null,
+        onFinish: (() -> Unit)? = null
+    ) {
+        mostrarAnimacion(imageView, ataque, delaysAtaque, onFrame, onFinish)
     }
 
-    fun dodge(imageView: ImageView)
+    fun dodge(
+        imageView: ImageView,
+        onFrame: ((frameIndex: Int) -> Unit)? = null)
     {
-        mostrarAnimacion(imageView, dodge, delaysDodge)
+        mostrarAnimacion(imageView, dodge, delaysDodge, onFrame)
         {
             idle(imageView)
         }

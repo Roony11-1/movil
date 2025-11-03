@@ -31,18 +31,18 @@ class CombateActivity : AppCompatActivity() {
         var pv1: TextView = findViewById(R.id.tvHP1)
         var pv2:TextView = findViewById(R.id.tvHP2)
 
-        Combate.combate(atacante1, atacante2, pv1, pv2)
-
         // Botones
         var btnAtacar1:Button = findViewById(R.id.btnAtacar1)
         var btnAtacar2:Button = findViewById(R.id.btnAtacar2)
 
+        Combate.iniciarCombate(atacante1, atacante2, pv1, pv2)
+
         btnAtacar1.setOnClickListener {
-            atacar(unidad1, atacante1)
+            Combate.atacar(unidad1, unidad2, atacante1, pv1, pv2)
         }
 
         btnAtacar2.setOnClickListener {
-            atacar(unidad2, atacante2)
+            Combate.atacar(unidad2, unidad1, atacante2, pv1, pv2)
         }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -50,10 +50,5 @@ class CombateActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-    }
-
-    private fun atacar(unidad: Unidad, imageView: ImageView)
-    {
-        unidad.atacarState(imageView)
     }
 }
