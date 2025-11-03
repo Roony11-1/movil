@@ -62,6 +62,7 @@ class PrincipalActivity : AppCompatActivity() {
                 "Crear Personaje",
                 "Ver Personajes",
                 "Combatir",
+                "Prueba Animaciones",
                 "Volver a pantalla principal"
             )
         }
@@ -97,6 +98,15 @@ class PrincipalActivity : AppCompatActivity() {
                 if (verificarSizePersonajes(personajes))
                 {
                     val intent = Intent(this@PrincipalActivity, VerPersonajeActivity::class.java)
+                    startActivity(intent)
+                }
+            }
+
+            if (opcionSeleccionada.equals("Prueba Animaciones"))
+            {
+                if (verificarSizePersonajes(personajes))
+                {
+                    val intent = Intent(this@PrincipalActivity, PruebaAnimacionesActivity::class.java)
                     startActivity(intent)
                 }
             }

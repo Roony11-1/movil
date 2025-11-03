@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Trabajo2Movil"
         tools:targetApi="31">
         <activity
+            android:name=".PruebaAnimacionesActivity"
+            android:exported="false" />
+        <activity
             android:name=".CombateActivity"
             android:exported="false" />
         <activity
