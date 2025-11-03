@@ -13,7 +13,11 @@ class Sprites(var imgScreen: Int,
 {
     private val handler = Handler(Looper.getMainLooper())
 
-    fun mostrarAnimacion(imageView: ImageView, frames: List<Int>, delays: List<Long>? = null, onFinish: (() -> Unit)? = null)
+    private fun mostrarAnimacion(
+        imageView: ImageView,
+        frames: List<Int>,
+        delays: List<Long>? = null,
+        onFinish: (() -> Unit)? = null)
     {
         if (frames.isEmpty()) return
         var frameIndex = 0

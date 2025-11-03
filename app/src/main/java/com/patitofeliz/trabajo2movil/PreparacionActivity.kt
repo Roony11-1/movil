@@ -1,5 +1,6 @@
 package com.patitofeliz.trabajo2movil
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.SimpleAdapter
@@ -45,8 +46,13 @@ class PreparacionActivity : AppCompatActivity() {
             // Obtener el personaje seleccionado
             val personajeSeleccionado = personajes[spSeleccion.selectedItemPosition]
 
+            Combate.limpiarListaCombatientes()
+
+            // Agregamos el combatiente a la batalla
+            Combate.agregarCombatientes(personajeSeleccionado)
             // Crear un enemigo aleatorio
             val enemigo = Combate.crearCombatiente()
+            Combate.agregarCombatientes(enemigo)
 
             // Configuramos el mensaje para el debug
             val mensaje = """
@@ -60,10 +66,13 @@ class PreparacionActivity : AppCompatActivity() {
             AlertDialog.Builder(this)
                 .setTitle("Combate local")
                 .setMessage(mensaje)
-                .setPositiveButton("Aceptar", null)
+                .setPositiveButton("Aceptar", {_, _ ->
+                    val intent = Intent(this@PreparacionActivity, CombateActivity::class.java)
+
+                    startActivity(intent)
+                })
                 .show()
 
-            // Deberia crear en el objeto la batalla¿deberia agregarle interfaz?
         }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->

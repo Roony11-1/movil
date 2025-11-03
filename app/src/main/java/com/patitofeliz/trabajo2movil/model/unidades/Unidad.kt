@@ -11,11 +11,17 @@ class Unidad(var id: Int? = null,
              var idUsuario: Int? = null,
              var estadisticasUnidad: Estadisticas)
 {
+    var hp: Int = 0
+    private var estadoActual: Estado = Estado.IDLE
+
+    init
+    {
+        hp = clase?.estadisticasBase?.pv ?: 0
+    }
+
     enum class Estado {
         IDLE, ATACANDO, DODGEANDO
     }
-
-    private var estadoActual: Estado = Estado.IDLE
 
     fun cambiarEstado(nuevo: Estado, imageView: ImageView)
     {

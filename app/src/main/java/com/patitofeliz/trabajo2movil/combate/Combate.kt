@@ -21,6 +21,21 @@ object Combate
         this.combatientes.add(unidad)
     }
 
+    fun limpiarListaCombatientes()
+    {
+        combatientes.clear()
+    }
+
+    fun getAtacante1(): Unidad
+    {
+        return combatientes[0]
+    }
+
+    fun getAtacante2(): Unidad
+    {
+        return combatientes[1]
+    }
+
     fun crearCombatiente():Unidad
     {
         var clases:List<ClaseInfo> = ClaseRegistro.obtenerTodas()
