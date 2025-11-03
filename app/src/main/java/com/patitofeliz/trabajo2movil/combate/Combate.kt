@@ -50,4 +50,6 @@ object Combate
 
         return unidadRandom
     }
+
+    // Esto llamaria el metodo de lucha de los personajes?
 }
