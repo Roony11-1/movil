@@ -54,7 +54,19 @@ class Unidad(var id: Int? = null,
     ) {
         estadoActual = Estado.ATACANDO
 
+        val posOriginalX = imageView.x
+
         clase?.atacarState(imageView) { frameIndex ->
+
+            // Calculamos el progreso (0.0 a 1.0) hasta el frame de daño
+            val totalFrames = clase?.sprites?.ataque?.size ?: 1
+            val frameDmg = clase?.sprites?.frameDmg ?: 0
+
+            if (frameIndex >= 2 && frameIndex <= frameDmg)
+            {
+                imageView.x = (posOriginalX + 95)
+            }
+
             if (frameIndex == this.clase?.sprites?.frameDmg && objetivo != null)
             {
                 val dmg = calcularDmg(objetivo)
@@ -62,6 +74,11 @@ class Unidad(var id: Int? = null,
                 println("${this.nombre} golpea a ${objetivo.nombre} por $dmg! HP restante: ${objetivo.hp}")
 
                 onDaño?.invoke()
+            }
+
+            if (frameIndex > frameDmg)
+            {
+                imageView.x = (posOriginalX - 95).coerceAtLeast(posOriginalX)
             }
         }
     }

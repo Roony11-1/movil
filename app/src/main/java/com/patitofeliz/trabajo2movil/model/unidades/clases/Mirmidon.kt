@@ -34,7 +34,7 @@ class Mirmidon : Clase(
             R.drawable.mirmidon_dodge2
         ),
         delaysDodge = listOf(
-            500
+            1000
         )
     )
 )

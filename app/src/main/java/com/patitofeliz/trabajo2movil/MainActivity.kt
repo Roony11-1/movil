@@ -16,6 +16,7 @@ import com.patitofeliz.trabajo2movil.model.LoginRequest
 import com.patitofeliz.trabajo2movil.model.Response
 import com.patitofeliz.trabajo2movil.model.Sesion
 import com.patitofeliz.trabajo2movil.model.Usuario
+import com.patitofeliz.trabajo2movil.model.unidades.clases.Espadachin
 import com.patitofeliz.trabajo2movil.model.unidades.clases.Jinete
 import com.patitofeliz.trabajo2movil.model.unidades.clases.Mirmidon
 import com.patitofeliz.trabajo2movil.sistemaunidad.UnidadController
@@ -34,6 +35,7 @@ class MainActivity : AppCompatActivity()
         // lo externalizare en su momento
         ClaseRegistro.registrar("Mirmidón") { Mirmidon() }
         ClaseRegistro.registrar("Jinete") { Jinete() }
+        ClaseRegistro.registrar("Espadachin", { Espadachin() })
 
         // Mapeamos
         // Botones
