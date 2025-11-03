@@ -2,6 +2,8 @@ package com.patitofeliz.trabajo2movil.combate
 
 import ClaseInfo
 import ClaseRegistro
+import android.widget.ImageView
+import android.widget.TextView
 import com.patitofeliz.trabajo2movil.model.unidades.Nivel
 import com.patitofeliz.trabajo2movil.model.unidades.Unidad
 import com.patitofeliz.trabajo2movil.model.unidades.clases.Clase
@@ -36,20 +38,25 @@ object Combate
         return combatientes[1]
     }
 
-    fun crearCombatiente():Unidad
-    {
-        var clases:List<ClaseInfo> = ClaseRegistro.obtenerTodas()
-        var seleccionRandom:Int = Random.nextInt(0, clases.size)
+    fun crearCombatiente():Unidad {
+        var clases: List<ClaseInfo> = ClaseRegistro.obtenerTodas()
+        var seleccionRandom: Int = Random.nextInt(0, clases.size)
         var claseRandom: Clase = clases[seleccionRandom].crear()
-        var unidadRandom:Unidad = Unidad(null,
+        var unidadRandom: Unidad = Unidad(
+            null,
             "Enemigo",
             claseRandom,
             Nivel(1, 0,),
             -1,
-            claseRandom.estadisticasBase)
+            claseRandom.estadisticasBase
+        )
 
         return unidadRandom
     }
 
-    // Esto llamaria el metodo de lucha de los personajes?
+    fun combate(imageView1: ImageView, imageView2: ImageView, hp1:TextView, hp2:TextView)
+    {
+        var unidad1 = getAtacante1().idleState(imageView1)
+        var unidad2 = getAtacante2().idleState(imageView2)
+    }
 }

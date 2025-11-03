@@ -28,14 +28,10 @@ class CombateActivity : AppCompatActivity() {
         val unidad1 = Combate.getAtacante1()
         val unidad2 = Combate.getAtacante2()
 
-        unidad1.idleState(atacante1)
-        unidad2.idleState(atacante2)
-
         var pv1: TextView = findViewById(R.id.tvHP1)
         var pv2:TextView = findViewById(R.id.tvHP2)
 
-        pv1.text = unidad1.hp.toString()
-        pv2.text = unidad2.hp.toString()
+        Combate.combate(atacante1, atacante2, pv1, pv2)
 
         // Botones
         var btnAtacar1:Button = findViewById(R.id.btnAtacar1)
